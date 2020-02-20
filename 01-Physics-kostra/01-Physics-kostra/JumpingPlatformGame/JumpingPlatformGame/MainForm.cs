@@ -93,4 +93,17 @@ namespace JumpingPlatformGame {
 		}
 	}
 
+    public class WorldPoint
+    {
+        public Meters X;
+        public Meters Y;
+    }
+
+    public class Movement
+    {
+        public Meters LowerBound;
+        public Meters UpperBound;
+        public MeterPerSeconds Speed;
+    }
+
 }

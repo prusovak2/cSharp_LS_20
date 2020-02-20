@@ -2,13 +2,16 @@
 
 namespace JumpingPlatformGame {
 	class Entity {
+        public WorldPoint Location;
 		public virtual Color Color => Color.Black;
 	}
 
 	class MovableEntity : Entity {
+        public Movement Horizontal;
 	}
 
 	class MovableJumpingEntity : MovableEntity {
+        public Movement Vertical;
 	}
 
 	class Joe : MovableEntity {
@@ -30,5 +33,4 @@ namespace JumpingPlatformGame {
 		public override string ToString() => "Jill";
 		public override Color Color => Color.Pink;
 	}
-
 }
