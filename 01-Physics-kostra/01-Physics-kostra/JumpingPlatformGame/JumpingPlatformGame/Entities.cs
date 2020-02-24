@@ -9,25 +9,56 @@ namespace JumpingPlatformGame {
 		{
 			if(this is MovableEntity movableEntity)
 			{
+				Meters horizontalDelta = deltaSeconds * movableEntity.Horizontal.Speed;
+				Meters newXlocation = movableEntity.Location.X + horizontalDelta;
+
 				//if you are leaving the screen 
-				if (movableEntity.Location.X >= movableEntity.Horizontal.UpperBound ||
-					movableEntity.Location.X <=movableEntity.Horizontal.LowerBound)
+				if (newXlocation >= movableEntity.Horizontal.UpperBound)					
 				{
 					//change direction
 					movableEntity.Horizontal.Speed *=(-1);
+					//move as far as you can
+					movableEntity.Location.X = movableEntity.Horizontal.UpperBound;
 				}
-				//update location
-				Meters horizontalDelta = deltaSeconds * movableEntity.Horizontal.Speed;
-				this.Location.X += horizontalDelta;
+				else if(newXlocation <= movableEntity.Horizontal.LowerBound)
+				{
+					//change direction
+					movableEntity.Horizontal.Speed *= (-1);
+					//move as far as you can
+					movableEntity.Location.X = movableEntity.Horizontal.LowerBound;
+				}
+				else
+				{
+					//just move
+					movableEntity.Location.X += horizontalDelta;
+				}
+				
+				
 			}
 			if (this is MovableJumpingEntity movableJumpingEntity)
 			{
+				Meters verticalDelta = deltaSeconds * movableJumpingEntity.Vertical.Speed;
+				Meters newYlocation = movableJumpingEntity.Location.Y + verticalDelta;
 				//if you are tryint to fly away from the screen
-				if (movableJumpingEntity.Location.Y >= movableJumpingEntity.Vertical.UpperBound)
+				if (newYlocation >= movableJumpingEntity.Vertical.UpperBound)
 				{
 					//change direction
 					movableJumpingEntity.Vertical.Speed *= (-1);
+					//move as far as you can
+					movableJumpingEntity.Location.Y = movableJumpingEntity.Vertical.UpperBound;
 				}
+				//if you reach the ground
+				else if (newYlocation <= movableJumpingEntity.Vertical.LowerBound)
+				{
+					//just stop falling
+					movableJumpingEntity.Location.Y = movableJumpingEntity.Vertical.LowerBound;
+				}
+				else
+				{
+					//just move
+					movableJumpingEntity.Location.Y += verticalDelta;
+				}
+
 			}
 		}
 	}

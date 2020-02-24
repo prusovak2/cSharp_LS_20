@@ -53,6 +53,22 @@
             }
             return false;
         }
+        public static bool operator >(Meters m1, Meters m2)
+        {
+            if (m1.Value > m2.Value)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool operator <(Meters m1, Meters m2)
+        {
+            if (m1.Value < m2.Value)
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool operator >=(Meters m1, Meters m2)
         {
             if (m1.Value >= m2.Value)
@@ -99,7 +115,7 @@
         }
         public static Meters operator +(Meters m1, Meters m2)
         {
-            return new Meters(m1.Value * m2.Value);
+            return new Meters(m1.Value + m2.Value);
         }
 
 
