@@ -26,7 +26,7 @@ namespace JumpingPlatformGame {
 
 			entity.Location = new WorldPoint {
 				X = random.Next(LabelWidth / 2, worldPanel.Width - LabelWidth / 2).Meters(),
-				Y = (LabelWidth / 2).Meters()
+				Y = (LabelWidth / 2).Meters() //is this correct?
 			};
 
 			var label = new Label();
@@ -92,18 +92,5 @@ namespace JumpingPlatformGame {
 			control.Top = worldHeight - (int) entity.Location.Y.Value - control.Height / 2;
 		}
 	}
-
-    public class WorldPoint
-    {
-        public Meters X;
-        public Meters Y;
-    }
-
-    public class Movement
-    {
-        public Meters LowerBound;
-        public Meters UpperBound;
-        public MeterPerSeconds Speed;
-    }
 
 }
